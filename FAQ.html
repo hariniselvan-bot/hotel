@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Stackly home</title>
+  
 
   <!-- Tailwind (CDN) -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -90,7 +91,6 @@
 </head>
 <body class="font-inter antialiased bg-black text-white">
 
-  
 <!-- HEADER -->
 <header class="header fixed top-0 left-0 w-full z-50 bg-black shadow h-20 flex items-center">
   <div class="max-w-7xl w-full mx-auto px-6 flex items-center justify-between h-full">
@@ -114,9 +114,9 @@
           <a href="index.html" class="block px-4 py-2 hover:bg-gray-800 nav-link">Home</a>
         </div>
       </div>
-      <a href="about.html"  class="hover:text-cyan-300">About❤️</a>
-            <a href="FAQ.html" class="hover:text-cyan-300">Gallery📸</a>
-      <a href="FAQ1.html" class="nav-link"style="color: #22d3ee !important; font-weight: 700 !important;">FAQ🍔</a>
+      <a href="about.html" class="hover:text-cyan-300">About❤️</a>
+            <a href="FAQ.html" class="nav-link"style="color: #22d3ee !important; font-weight: 700 !important;">Gallery📸</a>
+      <a href="FAQ1.html" class="hover:text-cyan-300">FAQ🍔</a>
       <a href="contact.html" class="nav-link hover:text-cyan-400">Contact📞</a>
 
       <a href="login.html" class="px-5 py-2 bg-cyan-500 text-black rounded-lg hover:bg-cyan-400 nav-link">
@@ -152,7 +152,7 @@
     </div>
 
       <a href="about.html" class="hover:text-cyan-300">About❤️</a>
-      <a href="Dashboard.html" class="hover:text-cyan-300">dashboard📊</a>
+            <a href="FAQ.html" class="hover:text-cyan-300">Gallery📸</a>
       <a href="FAQ1.html" class="hover:text-cyan-300">FAQ🍔</a>
 
       <!-- ACTIVE CONTACT MOBILE -->
@@ -161,119 +161,214 @@
       <a href="login.html" class="text-cyan-300 font-semibold mt-2">Login</a>
     </div>
   </nav>
-<main class="pt-32">
+<main class="pt-20">
 
 <script>
   const hamburgerBtn = document.getElementById("hamburgerBtn");
   const mobileMenu = document.getElementById("mobileMenu");
+  const mobileHomeDrop = document.getElementById("mobileHomeDrop");
 
+  // Open/close hamburger menu
   hamburgerBtn.addEventListener("click", () => {
     mobileMenu.classList.toggle("hidden");
   });
-  function toggleMobileDrop() {
-  const drop = document.getElementById("mobileHomeDrop");
-  drop.classList.toggle("hidden");
-}
 
+  // Dropdown inside mobile menu
+  function toggleMobileDrop() {
+    mobileHomeDrop.classList.toggle("hidden");
+  }
 </script>
 
-  <!-- ================ FAQ SECTION (REPLACES HERO) ================= -->
-  <section class="flex justify-center px-6 pb-20">
-    <div class="faq-container max-w-3xl w-full text-center">
 
-      <h4 class="text-gray-300 text-lg mb-2">Got Questions?</h4>
-      <h1 class="text-4xl font-extrabold mb-10">FREQUENTLY ASKED QUESTIONS</h1>
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-      <div class="bg-[#121212] border border-gray-800 rounded-xl overflow-hidden">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
 
-        <!-- FAQ ITEM 5 -->
-<div class="border-b border-gray-800">
-  <button class="faq-question w-full text-left px-6 py-5 flex justify-between items-center text-lg">
-    <span>Do you offer ongoing support after project completion?</span>
-    <span class="icon text-2xl font-bold">+</span>
-  </button>
-  <div class="faq-answer text-gray-300 text-base leading-relaxed px-6 pb-0 max-h-0 overflow-hidden">
-    Yes. We provide monthly maintenance, security updates, backups, bug fixes,
-    and new feature development depending on your support plan.
-  </div>
-</div>
+  <style>
+    body { background-color: #0d0d0d; color: #f1f1f1; font-family: 'Segoe UI', sans-serif; }
 
-<!-- FAQ ITEM 6 -->
-<div>
-            <div class="border-b border-gray-800">
+    h2 {
+      text-align: center;
+      font-size: 2.5em;
+      margin: 50px 0 30px;
+      color: #ffdd59;
+      text-shadow: 0 0 10px #ffdd59;
+    }
 
-  <button class="faq-question w-full text-left px-6 py-5 flex justify-between items-center text-lg">
-    <span>Can you integrate AI tools or automation into systems?</span>
-    <span class="icon text-2xl font-bold">+</span>
-  </button>
-  <div class="faq-answer text-gray-300 text-base leading-relaxed px-6 pb-0 max-h-0 overflow-hidden">
-    Absolutely. We build AI-based automation, chatbots, data analysis tools,
-    and integrate third-party AI APIs like OpenAI, Gemini, and custom ML models.
-  </div>
-</div>
-  <!-- FAQ ITEM 2 -->
-        <div class="border-b border-gray-800">
-          <button class="faq-question w-full text-left px-6 py-5 flex justify-between items-center text-lg">
-            <span>How long does a development project take?</span>
-            <span class="icon text-2xl font-bold">+</span>
-          </button>
-          <div class="faq-answer text-gray-300 text-base leading-relaxed px-6 pb-0 max-h-0 overflow-hidden">
-            Small projects take 3–8 weeks. Larger systems vary from 2–6 months.
+    .nav-active { color: cyan !important; }
+
+    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; max-width: 1200px; margin: 0 auto; padding-bottom: 50px; }
+
+    .gallery-card {
+      background-color: #1a1a1a;
+      border-radius: 15px;
+      overflow: hidden;
+      transition: transform 0.4s, box-shadow 0.4s;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .gallery-card:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 0 25px #ff3399; }
+
+    .gallery-card img { width: 100%; height: 180px; object-fit: cover; }
+
+    .gallery-card-content {
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .gallery-card-content h3 { margin: 0 0 10px; font-size: 1.3em; color: #ff3399; }
+
+    .gallery-card-content p { font-size: 0.95em; color: #ccc; flex: 1; }
+
+    .gallery-card-content span { font-weight: bold; color: #00ff99; margin-top: 10px; font-size: 1.1em; }
+
+    .order-btn { display: inline-block; margin-top: 10px; padding: 8px 15px; background-color: #ff3399; color: #fff; font-weight: bold; border-radius: 8px; text-decoration: none; text-align: center; transition: background 0.3s, transform 0.3s; }
+
+    .order-btn:hover { background-color: #ff66b2; transform: scale(1.05); }
+
+    @media (max-width: 600px) {
+      h2 { font-size: 2em; }
+      .gallery-card img { height: 150px; }
+    }
+  </style>
+</head>
+<body class="font-inter antialiased">
+
+    <section class="gallery">
+      <h2>Premium Gallery</h2>
+      <div class="gallery-grid">
+
+        <!-- Existing 6 items -->
+        <div class="gallery-card">
+          <img src="pg1.webp" alt="Sushi Platter">
+          <div class="gallery-card-content">
+            <h3>Sushi Platter</h3>
+            <p>Chef's finest selection of sushi rolls.</p>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <img src="pg2.webp" alt="Seafood Delight">
+          <div class="gallery-card-content">
+            <h3>Seafood Delight</h3>
+            <p>Fresh seafood served with love and spice.</p>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <img src="pg3.webp" alt="Wagyu Special">
+          <div class="gallery-card-content">
+            <h3>Wagyu Special</h3>
+            <p>Premium wagyu beef cooked to perfection.</p>
+         </div>
+        </div>
+        <div class="gallery-card">
+          <img src="pg4.webp" alt="Signature Rolls">
+          <div class="gallery-card-content">
+            <h3>Signature Rolls</h3>
+            <p>Colorful rolls with fresh ingredients and sauces.</p>
+         </div>
+        </div>
+        <div class="gallery-card">
+          <img src="pg5.webp" alt="Truffle Tuna">
+          <div class="gallery-card-content">
+            <h3>Truffle Tuna</h3>
+            <p>Exquisite tuna with truffle-infused glaze.</p>
+       </div>
+        </div>
+        <div class="gallery-card">
+          <img src="pg6.webp" alt="Spicy Salmon">
+          <div class="gallery-card-content">
+            <h3>Spicy Salmon</h3>
+            <p>Fiery salmon rolls for adventurous palates.</p>
           </div>
         </div>
 
-        <!-- FAQ ITEM 3 -->
-        <div class="border-b border-gray-800">
-          <button class="faq-question w-full text-left px-6 py-5 flex justify-between items-center text-lg">
-            <span>What pricing models do you use?</span>
-            <span class="icon text-2xl font-bold">+</span>
-          </button>
-          <div class="faq-answer text-gray-300 text-base leading-relaxed px-6 pb-0 max-h-0 overflow-hidden">
-            We offer fixed-price, hourly billing, subscription maintenance,
-            and dedicated full-time developer models.
+        <!-- Additional 10 items -->
+        <div class="gallery-card">
+          <img src="pg7.webp" alt="Dragon Fire Roll">
+          <div class="gallery-card-content">
+            <h3>Dragon Fire Roll</h3>
+            <p>Spicy tuna with tempura crunch and chili kick.</p>
           </div>
         </div>
-
-        <!-- FAQ ITEM 4 -->
-        <div>
-          <button class="faq-question w-full text-left px-6 py-5 flex justify-between items-center text-lg">
-            <span>Do you provide UI/UX design?</span>
-            <span class="icon text-2xl font-bold">+</span>
-          </button>
-          <div class="faq-answer text-gray-300 text-base leading-relaxed px-6 pb-0 max-h-0 overflow-hidden">
-            Yes. Our designers create UI kits, wireframes, prototypes,
-            and complete responsive layouts for websites & applications.
+        <div class="gallery-card">
+          <img src="pg8.webp" alt="Golden Maki">
+          <div class="gallery-card-content">
+            <h3>Golden Maki</h3>
+            <p>Wagyu beef layered over classic maki rolls.</p>
+           </div>
+        </div>
+        <div class="gallery-card">
+          <img src="pg9.webp" alt="Royal Tuna">
+          <div class="gallery-card-content">
+            <h3>Royal Tuna</h3>
+            <p>Bluefin tuna topped with truffle-infused soy glaze.</p>
           </div>
+        </div>
+        <div class="gallery-card">
+          <img src="pg10.webp" alt="Avocado Delight">
+          <div class="gallery-card-content">
+            <h3>Avocado Delight</h3>
+            <p>Creamy avocado roll with a light soy drizzle.</p>
+           </div>
+        </div>
+        <div class="gallery-card">
+          <img src="Rainbow.webp" alt="Rainbow Roll">
+          <div class="gallery-card-content">
+            <h3>Rainbow Roll</h3>
+            <p>Colorful mix of fresh fish and vegetables.</p>
+ ]         </div>
+        </div>
+        <div class="gallery-card">
+          <img src="salmon.webp" alt="Salmon Nigiri">
+          <div class="gallery-card-content">
+            <h3>Salmon Nigiri</h3>
+            <p>Fresh salmon over perfectly formed rice.</p>
+           </div>
+        </div>
+        <div class="gallery-card">
+          <img src="tuna.webp" alt="Tuna Tataki">
+          <div class="gallery-card-content">
+            <h3>Tuna Tataki</h3>
+            <p>Seared tuna with light sesame sauce.</p>
+           </div>
+        </div>
+        <div class="gallery-card">
+          <img src="roll.webp" alt="Eel Roll">
+          <div class="gallery-card-content">
+            <h3>Eel Roll</h3>
+            <p>Grilled eel with sweet soy glaze.</p>
+            </div>
+        </div>
+        <div class="gallery-card">
+          <img src="roll2.webp" alt="Veggie Roll">
+          <div class="gallery-card-content">
+            <h3>Veggie Roll</h3>
+            <p>Fresh vegetables rolled to perfection.</p>
+        </div>
+        </div>
         </div>
 
       </div>
+    </section>
 
-    </div>
-  </section>
+  </main>
 
-</main>
-<script>
-  // FAQ Toggle Script
-  document.querySelectorAll(".faq-question").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const answer = btn.nextElementSibling;
-      const icon = btn.querySelector(".icon");
+  <script>
+    const hamburgerBtn = document.getElementById("hamburgerBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
 
-      answer.classList.toggle("open");
-
-      if (answer.classList.contains("open")) {
-        answer.style.maxHeight = answer.scrollHeight + "px";
-        answer.style.paddingBottom = "24px";
-        icon.textContent = "−";
-      } else {
-        answer.style.maxHeight = "0";
-        answer.style.paddingBottom = "0";
-        icon.textContent = "+";
-      }
+    hamburgerBtn.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
     });
-  });
-</script>
+  </script>
 
+</body>
+</html>
 
 <footer class="bg-[#0c0016] text-gray-300 py-16 px-6">
 
@@ -294,7 +389,7 @@
         <h4 class="text-xl font-semibold text-white mb-4 tracking-wide">Main</h4>
 
         <ul class="space-y-3 text-gray-300 text-sm">
-          <li><a href="home2.html" class="hover:text-white">Home 2 </a></li>
+           <li><a href="home2.html" class="hover:text-white">Home 2 </a></li>
           <li><a href="about.html" class="hover:text-white">About❤️</a></li>
           <li><a href="FAQ.html" class="hover:text-white">Gallery📸</a></li>
           <li><a href="FAQ1.html" class="hover:text-white">FAQ🍔</a></li>
@@ -323,3 +418,5 @@
 
   </div>
 </footer>
+</body>
+</html>

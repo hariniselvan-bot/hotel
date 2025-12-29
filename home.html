@@ -434,9 +434,191 @@ body{
 
 <body>
 
-<!-- ================= LANDING ================= -->
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins', sans-serif;
+}
+
+/* ✅ IMPORTANT FIX */
+html, body{
+  width:100%;
+  overflow-x:hidden;   /* only horizontal hidden */
+}
+
+/* ================= HEADER ================= */
+.header{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:999;
+  background:#000;
+  border-bottom:1px solid rgba(255,255,255,.1);
+}
+
+.navbar{
+  max-width:1200px;
+  margin:auto;
+  padding:14px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.logo img{
+  height:38px;
+}
+
+/* NAV */
+.nav-links{
+  display:flex;
+  gap:26px;
+}
+
+.nav-links a{
+  color:#fff;
+  text-decoration:none;
+  font-size:14px;
+}
+
+.login-btn{
+  background:#06b6d4;
+  color:#000 !important;
+  padding:8px 18px;
+  border-radius:10px;
+  font-weight:600;
+}
+
+/* HAMBURGER */
+.hamburger{
+  display:none;
+  font-size:26px;
+  color:#fff;
+  cursor:pointer;
+}
+
+/* MOBILE NAV */
+@media(max-width:768px){
+  .hamburger{ display:block; }
+
+  .nav-links{
+    position:fixed;
+    top:60px;
+    left:0;
+    width:100%;
+    height:calc(100vh - 60px);
+    background:#000;
+    flex-direction:column;
+    align-items:center;
+    padding-top:30px;
+    transform:translateX(100%);
+    transition:.3s ease;
+  }
+
+  .nav-links.active{
+    transform:translateX(0);
+  }
+
+  .nav-links a{
+    font-size:18px;
+  }
+}
+
+/* ================= LANDING ================= */
+.landing{
+  position:relative;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding-top:80px; /* header space */
+  text-align:center;
+  color:#fff;
+}
+
+/* VIDEO */
+.landing video{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:-2;
+}
+
+/* OVERLAY */
+.landing::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,.55);
+  z-index:-1;
+}
+
+/* CONTENT */
+.content{
+  max-width:900px;
+  padding:20px;
+}
+
+.tagline{
+  color:#39ff14;
+  font-style:italic;
+  margin-bottom:12px;
+}
+
+.content h1{
+  font-size:56px;
+  font-weight:800;
+  line-height:1.2;
+}
+
+.content h1 span{
+  color:#ffd000;
+}
+
+.content p{
+  margin-top:18px;
+  font-size:15px;
+  opacity:.9;
+}
+
+.cta-btn{
+  display:inline-block;
+  margin-top:28px;
+  background:#ffd000;
+  color:#000;
+  padding:14px 36px;
+  border-radius:32px;
+  font-weight:700;
+  text-decoration:none; /* ❌ no underline */
+}
+
+.info{
+  margin-top:24px;
+  display:flex;
+  gap:18px;
+  justify-content:center;
+  font-size:13px;
+}
+
+.dot{ color:#ffd000; }
+
+/* MOBILE TEXT */
+@media(max-width:768px){
+  .content h1{ font-size:34px; }
+  .info{ flex-direction:column; }
+}
+</style>
+</head>
+
+<body>
+<!-- LANDING -->
 <section class="landing">
-  <!-- ADD YOUR VIDEO -->
   <video autoplay muted loop>
     <source src="bg.mp4" type="video/mp4">
   </video>
@@ -464,6 +646,16 @@ body{
     </div>
   </div>
 </section>
+
+<script>
+const hamburger = document.getElementById("hamburger");
+const navLinks = document.getElementById("navLinks");
+
+hamburger.onclick = () => {
+  navLinks.classList.toggle("active");
+};
+</script>
+
 
 <!-- ================= NEXT SCROLL ================= -->
 <section class="bowls-section reveal">
@@ -660,7 +852,7 @@ observer.observe(section);
   <!-- IMAGE CARD -->
   <div class="cook-card">
     <!-- 🔁 replace image later if needed -->
-    <img src="beef (1).webp" alt="Cooking Fresh">
+    <img src="beef.webp" alt="Cooking Fresh">
 
     <div class="cook-text">
       <h3>YOU TAP, WE COOK!</h3>
